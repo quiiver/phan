@@ -646,7 +646,24 @@ class CodeBase
      */
     public function flushDependenciesForFile(string $file_path)
     {
-        // TODO: ...
+        // TODO
+    }
+
+    /**
+     * flushByFQSEN
+     *
+     * @param FQSEN $fqsen
+     * @return void
+     */
+    public function flusByFQSEN($fqsen) {
+        if ($fqsen instanceof FullyQualifiedClassName) {
+            unset($this->fqsen_class_map[$fqsen]);
+            unset($this->class_fqsen_class_map_map[$fqsen]);
+        } else if ($fqsen instanceof FullyQualifiedFunctionName) {
+            unset($this->fqsen_func_map[$fqsen]);
+        } else if ($fqsen instanceof FullyQualifiedGlobalConstantName) {
+            unset($this->fqsen_global_constant_map[$fqsen]);
+        }
     }
 
     /**
